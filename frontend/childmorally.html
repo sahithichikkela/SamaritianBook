@@ -1,0 +1,707 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="ajax.js"></script>
+    
+ 
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Samaritian Book</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <!-- CSS
+	============================================ -->
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/bicon.min.css">
+    <!-- Flat Icon CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/flaticon.css">
+    <!-- audio & video player CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/plyr.css">
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/slick.min.css">
+    <!-- nice-select CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
+    <!-- perfect scrollbar css -->
+    <link rel="stylesheet" href="assets/css/plugins/perfect-scrollbar.css">
+    <!-- light gallery css -->
+    <link rel="stylesheet" href="assets/css/plugins/lightgallery.min.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .scrollmiddle {
+        /* enable div scrolling */
+        overflow: scroll;
+        /* overflow: hidden; */
+        height: 70em;
+        margin-left: 5px; 
+        /* width: 300px; */
+        margin: 0 auto;
+        /* white-space: nowrap; */
+        /* font-size: large; */
+
+        }
+        
+
+        body{
+            max-height: 3em;
+        }
+    </style>
+
+</head>
+
+<body>
+    
+   <!-- header area start -->
+<header id="headerss" style="display: none;">
+    <div class="header-top sticky bg-white d-none d-lg-block">
+        <div class="" >
+            <div class="row align-items-center">
+                <div class="col-md-2">
+                    <!-- brand logo start -->
+                    <div class="brand-logo ">
+                        <a href="index.html">
+                            <img src="assets/images/logo/logo.png" alt="brand logo">
+                        </a>
+                    </div>
+                    <!-- brand logo end -->
+                </div>
+                <div class="col-sm-9">
+                    <!-- header top navigation start -->
+                    
+                    <div class="header-top-navigation">
+                        <nav>
+                            <ul>
+                                <li class=""><a href="index.html">home</a></li>
+                                <li class="active"><a href="childmorally.html">morally</a></li>
+                                <li class="msg-trigger"><a class="msg-trigger-btn" id="recentmessages" href="#a">message</a>
+                                    <div class="message-dropdown" id="a">
+                                        <div class="dropdown-title">
+                                            <p class="recent-msg">recent messages</p>
+                                        </div>
+                                        <ul class="dropdown-msg-list" id="recentmessagesdropdown">
+                                            <!-- <li class="msg-list-item d-flex justify-content-between">
+                                                <div class="profile-thumb">
+                                                    <figure class="profile-thumb-middle">
+                                                        <img src="assets/images/profile/profile-small-3.jpg" alt="profile picture">
+                                                    </figure>
+                                                </div>
+                                                <div class="msg-content">
+                                                    <h6 class="author"><a href="profile.html">Mili Raoulin</a></h6>
+                                                    <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default</p>
+                                                </div>
+                                                <div class="msg-time">
+                                                    <p>25 Apr 2019</p>
+                                                </div>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="msg-trigger"><a class="msg-trigger-btn" href="#c">friend requests</a>
+                                    <div class="message-dropdown" id="c">
+                                        <div class="dropdown-title">
+                                            <p class="recent-msg">recent friend requests</p>
+                                            
+                                        </div>
+                                        <ul class="dropdown-msg-list" id="friendrequests">
+                                            <!-- <li class="msg-list-item d-flex justify-content-between">
+                                                <div class="profile-thumb">
+                                                    <figure class="profile-thumb-middle">
+                                                        <img src="assets/images/profile/profile-small-3.jpg" alt="profile picture">
+                                                    </figure>
+                                                </div>
+                                                <div class="msg-content mt-3">
+                                                    <h6 class="author"><a href="profile.html">Mili Raoulin</a></h6>
+                                                </div>
+                                                <div class="mt-3" >
+                                                    <button class="btn btn-primary" style="color:black" >accept</button>
+                                                    <button class="btn btn-danger" style="color:black">reject</button>
+                                                </div>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="notification-trigger"><a class="msg-trigger-btn" id="notifications" href="#b">notification</a>
+                                    <div class="message-dropdown" id="b">
+                                        <div class="dropdown-title">
+                                            <p class="recent-msg">New Notifications</p>
+                                        </div>
+                                        <ul class="dropdown-msg-list" id="recentnotifi">
+                                            <div id="addnewnotifications">
+                                                <!-- <li class="msg-list-item d-flex justify-content-between">
+                                                <div class="msg-content notification-content">
+                                                    <a href="profile.html">Robert Faul</a>,
+                                                    <a href="profile.html">william jhon</a>
+                                                    <p>and 35 other people reacted to your photo</p>
+                                                </div>
+                                            </li> -->
+                                            </div>
+                                            <div style="display:none" id="divnotifications">
+                                                <!-- <li class="msg-list-item d-flex justify-content-between">
+                                                    <div class="msg-content">
+                                                        <a>newnotifications</a>
+                                                    </div>
+                                                    <div class="msg-time">
+                                                        <p>25 Apr 2019</p>
+                                                    </div>
+                                                </li> -->
+                                            </div>
+                                        </ul>
+                                        <div class="msg-dropdown-footer">
+                                            <button onclick="getallnotifications()">see all notifications</button>
+                                            <button onclick="backtonewnotifications()">retrun to new notifications</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="msg-trigger"><a class="msg-trigger-btn" href="#d"><input class="form-control" id="search" type="text" placeholder="Search Profiles" onkeyup="searchfriends()"></a>
+                                    <div class="message-dropdown" id="d">
+                                        <div class="dropdown-title">
+                                            <p class="recent-msg">Search results</p>
+                                            
+                                        </div>
+                                        <ul class="dropdown-msg-list" id="requests">
+                                            <!-- <li class="" style="display:flex">
+                                                <div class="profile-thumb mb-3">
+                                                    <figure class="profile-thumb-middle">
+                                                        <img src="assets/images/profile/profile-small-3.jpg" alt="profile picture">
+                                                    </figure>
+                                                </div>
+                                                <div class="msg-content mt-3 pl-4" >
+                                                    <h6 class="author"><a href="profile.html" class="pl-4">Mili Raoulin</a></h6>
+                                                </div>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- header top navigation start -->
+                </div>
+   
+               
+   
+                <div class="col-sm-1">
+                    <div class="header-top-right d-flex align-items-center justify-content-end">
+                        <!-- header top search start -->
+                        <!-- <div class="header-top-search">
+                            <form class="top-search-box">
+                                <input type="text" placeholder="Search profiles" id="searchtext" onkeyup="search()" class="top-search-field">
+                            </form>
+                        </div> -->
+                        <!-- header top search end -->
+                            
+                        <!-- profile picture start -->
+                        <div class="profile-setting-box">
+                            <div class="profile-thumb-small">
+                                <a href="javascript:void(0)" class="profile-triger" id="profile:trigger">
+                                    <figure>
+                                        <img src="assets/images/profile/profile-35x35-1.jpg" alt="profile picture">
+                                    </figure>
+                                </a>
+                                <div class="profile-dropdown">
+                                    <div class="profile-head">
+                                        <h5 class="name"><a href="profile.html" id="currname">Madison Howard</a></h5>
+                                        <a class="mail" href="profile.html" id="curremail">mailnam@mail.com</a>
+                                    </div>
+                                    <div class="profile-body">
+                                        <ul>
+                                            <li><a href="profile.html"><i class="flaticon-user"></i>Profile</a></li>
+                                            <li><a onclick="getallnotifications1()"><i class="flaticon-message"></i>Inbox</a></li>
+                                            <li><a href="#"><i class="flaticon-document"></i>Activity</a></li>
+                                        </ul>
+                                        <ul>
+                                            <li><a href="#"><i class="flaticon-settings"></i>Settings</a></li>
+                                            <li><a href="#" onclick="logout()"><i class="flaticon-unlock"></i>Sign out</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- profile picture end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   </header>
+   <!-- header area end -->
+   <!-- header area start -->
+   <header>
+    <div class="mobile-header-wrapper sticky d-block d-lg-none">
+        <div class="mobile-header position-relative ">
+            <div class="mobile-logo">
+                <a href="index.html">
+                    <img src="assets/images/logo/logo-white.png" alt="logo">
+                </a>
+            </div>
+            <div class="mobile-menu w-100">
+                <ul>
+                    <li>
+                        <button class="notification request-trigger"><i class="flaticon-users"></i>
+                            <span>03</span>
+                        </button>
+                        <ul class="frnd-request-list">
+                            <li>
+                                <div class="frnd-request-member">
+                                    <figure class="request-thumb">
+                                        <a href="profile.html">
+                                            <img src="assets/images/profile/profile-midle-1.jpg" alt="proflie author">
+                                        </a>
+                                    </figure>
+                                    <div class="frnd-content">
+                                        <h6 class="author"><a href="profile.html">merry watson</a></h6>
+                                        <p class="author-subtitle">Works at HasTech</p>
+                                        <div class="request-btn-inner">
+                                            <button class="frnd-btn">confirm</button>
+                                            <button class="frnd-btn delete">delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frnd-request-member">
+                                    <figure class="request-thumb">
+                                        <a href="profile.html">
+                                            <img src="assets/images/profile/profile-midle-2.jpg" alt="proflie author">
+                                        </a>
+                                    </figure>
+                                    <div class="frnd-content">
+                                        <h6 class="author"><a href="profile.html">merry watson</a></h6>
+                                        <p class="author-subtitle">Works at HasTech</p>
+                                        <div class="request-btn-inner">
+                                            <button class="frnd-btn">confirm</button>
+                                            <button class="frnd-btn delete">delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frnd-request-member">
+                                    <figure class="request-thumb">
+                                        <a href="profile.html">
+                                            <img src="assets/images/profile/profile-midle-3.jpg" alt="proflie author">
+                                        </a>
+                                    </figure>
+                                    <div class="frnd-content">
+                                        <h6 class="author"><a href="profile.html">merry watson</a></h6>
+                                        <p class="author-subtitle">Works at HasTech</p>
+                                        <div class="request-btn-inner">
+                                            <button class="frnd-btn">confirm</button>
+                                            <button class="frnd-btn delete">delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button class="notification"><i class="flaticon-notification"></i>
+                            <span>03</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="chat-trigger notification"><i class="flaticon-chats"></i>
+                            <span>04</span>
+                        </button>
+                        <div class="mobile-chat-box">
+                            <div class="live-chat-title">
+                                <!-- profile picture end -->
+                                <div class="profile-thumb">
+                                    <a href="profile.html">
+                                        <figure class="profile-thumb-small profile-active">
+                                            <img src="assets/images/profile/profile-35x35-13.jpg" alt="profile picture">
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- profile picture end -->
+                                <div class="posted-author">
+                                    <h6 class="author"><a href="profile.html">Robart Marloyan</a></h6>
+                                    <span class="active-pro">active now</span>
+                                </div>
+                                <div class="live-chat-settings ml-auto">
+                                    <button class="chat-settings"><img src="assets/images/icons/settings.png" alt=""></button>
+                                    <button class="close-btn"><img src="assets/images/icons/close.png" alt=""></button>
+                                </div>
+                            </div>
+                            <div class="message-list-inner">
+                                <ul class="message-list custom-scroll">
+                                    <li class="text-friends">
+                                        <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
+                                        <div class="message-time">10 minute ago</div>
+                                    </li>
+                                    <li class="text-author">
+                                        <p>Many desktop publishing packages and web page editors</p>
+                                        <div class="message-time">5 minute ago</div>
+                                    </li>
+                                    <li class="text-friends">
+                                        <p>packages and web page editors </p>
+                                        <div class="message-time">2 minute ago</div>
+                                    </li>
+                                    <li class="text-friends">
+                                        <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
+                                        <div class="message-time">10 minute ago</div>
+                                    </li>
+                                    <li class="text-author">
+                                        <p>Many desktop publishing packages and web page editors</p>
+                                        <div class="message-time">5 minute ago</div>
+                                    </li>
+                                    <li class="text-friends">
+                                        <p>packages and web page editors </p>
+                                        <div class="message-time">2 minute ago</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="chat-text-field mob-text-box">
+                                <textarea class="live-chat-field custom-scroll" placeholder="Text Message"></textarea>
+                                <button class="chat-message-send" type="submit" value="submit">
+                                    <img src="assets/images/icons/plane.png" alt="">
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="search-trigger">
+                            <i class="search-icon flaticon-search"></i>
+                            <i class="close-icon flaticon-cross-out"></i>
+                        </button>
+                        <div class="mob-search-box">
+                            <form class="mob-search-inner">
+                                <input type="text" placeholder="Search" class="mob-search-field">
+                                <button class="mob-search-btn"><i class="flaticon-search"></i></button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="mobile-header-profile">
+                <!-- profile picture end -->
+                <div class="profile-thumb profile-setting-box">
+                    <a href="javascript:void(0)" class="profile-triger">
+                        <figure class="profile-thumb-middle">
+                            <img src="assets/images/profile/profile-small-1.jpg" alt="profile picture">
+                        </figure>
+                    </a>
+                    <div class="profile-dropdown text-left">
+                        <div class="profile-head">
+                            <h5 class="name"><a href="#">Madison Howard</a></h5>
+                            <a class="mail" href="#">mailnam@mail.com</a>
+                        </div>
+                        <div class="profile-body">
+                            <ul>
+                                <li><a href="profile.html"><i class="flaticon-user"></i>Profile</a></li>
+                                <li><a href="#"><i class="flaticon-message"></i>Inbox</a></li>
+                                <li><a href="#"><i class="flaticon-document"></i>Activity</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#"><i class="flaticon-settings"></i>Settings</a></li>
+                                <li><a href="#" style="cursor:pointer" onclick="logout()"><i class="flaticon-unlock"></i>Sing out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- profile picture end -->
+            </div>
+        </div>
+    </div>
+   </header>
+
+   <main id="maindiv" style="display:none">
+    <br><br><br>
+    <br>
+    <br><br>
+    <h3 style="padding-left: 100px;"><i>All the categories waiting for you</i></h3><br>
+    <div class="row" id="categoryposts" style="margin-left:90px ;">
+        <!-- <div class="card text-white bg-primary mb-3" style="max-width: 18rem; border-radius: 60px;">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h5 class="card-title">Primary card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <button class="btn btn-primary" >See All</button>
+            </div>
+          </div> -->
+          
+
+    </div>
+    <br>
+    <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
+    <h1 id="posts" style="display:none;padding-left: 100px;"><i>Posts</i></h1><br>
+    <div id="catdisplay" class="container mb-5 ml-5 mt-5 mr-5"> 
+
+    </div>
+
+</main>
+
+    <!-- Scroll to top start -->
+    <div class="scroll-top not-visible">
+        <i class="bi bi-finger-index"></i>
+    </div>
+    <!-- Scroll to Top End -->
+
+    <!-- footer area start -->
+    <footer class="d-none d-lg-block" id="footerss" style="display: none;" >
+        <div class="footer-area reveal-footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer-wrapper" style="height: 60px;">
+                            <div class="footer-card position-relative" style="height: 40px;">
+                                <div class="friends-search">
+                                    <input type="text" placeholder="Search Your Friends" class="search-field">
+                                    <!-- <button class="search-btn"><i class="flaticon-search"></i></button> -->
+                                
+                                </div>
+                                <div class="friend-search-list">
+                                    <div class="frnd-search-title">
+                                        <button class="frnd-search-icon"><i class="flaticon-settings"></i></button>
+                                        <p>search friends</p>
+                                        <button class="close-btn" data-close="friend-search-list"><i class="flaticon-cross-out"></i></button>
+                                    </div>
+                                    <div class="frnd-search-inner custom-scroll">
+                                        <ul id="friends">
+                                            <!-- <li class="d-flex align-items-center profile-active">
+                                                <div class="profile-thumb active">
+                                                    <a href="#">
+                                                        <figure class="profile-thumb-small">
+                                                            <img src="assets/images/profile/profile-35x35-1.jpg" alt="profile picture">
+                                                        </figure>
+                                                    </a>
+                                                </div>
+
+                                                <div class="posted-author">
+                                                    <h6 class="author">Jon Wilime</h6>
+                                                    <p>Many desktop publishing</p>
+                                                </div>
+                                            </li> -->
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-small mb-0 active-profile-wrapper" style="display:none">
+                                <div class="active-profiles-wrapper">
+                                    <div class="active-profile-carousel slick-row-20 slick-arrow-style">
+                                        <div class="single-slide">
+                                            <div class="profile-thumb active profile-active">
+                                                <a id="cli">
+                                                    <figure class="profile-thumb-small">
+                                                        <img src="assets/images/profile/profile-35x35-1.jpg" alt="profile picture">
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer-card position-relative" id="chatarea">
+                                <div class="live-chat-inner">
+                                    <div class="chat-text-field" >
+                                        <div id="currchatid" style="display:none"></div>
+                                        <input class="live-chat-field custom-scroll" placeholder="Text Message" id="messagebox">
+                                        <button class="chat-message-send" type="submit" onclick="sendmessage()">
+                                            <img src="assets/images/icons/plane.png" alt="">
+                                        </button>
+                                    </div>
+                                    <div class="chat-output-box">
+                                        <div class="live-chat-title">
+                                            <!-- profile picture end -->
+                                            <div class="profile-thumb" id="status2">
+                                                <a href="#">
+                                                    <figure class="profile-thumb-small">
+                                                        <img src="assets/images/profile/profile-35x35-13.jpg" alt="profile picture">
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                            <!-- profile picture end -->
+                                            <div class="posted-author ">
+                                                <h6 class="author"><a href="profile.html" id="oppositename">Robart Marloyan</a></h6>
+                                                <svg xmlns="http://www.w3.org/2000/svg" onclick="phone()" style="cursor: pointer;" width="16" height="16" fill="currentColor" class="bi bi-telephone-outbound-fill" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5z"/>
+                                                </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" onclick="video()" style="cursor: pointer;" width="16" height="16" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z"/>
+                                                </svg>
+                                                
+                                            </div>
+                                            <div class="active-pro" id="status3">active now</div>
+                                            <div class="live-chat-settings ms-auto">
+                                                <button class="chat-settings"><i class="flaticon-settings"></i></button>
+                                                <button class="close-btn" data-close="chat-output-box" onclick="clearcurrchatid()"><i class="flaticon-cross-out"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="message-list-inner">
+                                            <ul class="message-list custom-scroll" id="messages">
+                                                <!-- <li class="text-friends">
+                                                    <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
+                                                    <div class="message-time">10 minute ago</div>
+                                                </li>
+                                                <li class="text-author">
+                                                    <p>Many desktop publishing packages and web page editors</p>
+                                                    <div class="message-time">5 minute ago</div>
+                                                </li> -->
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- footer area start -->
+    <footer class="d-block d-lg-none">
+        <div class="footer-area reveal-footer" >
+            <div class="container ">
+                <div class="row">
+                    <div class="col-12" >
+                        <div class="mobile-footer-inner d-flex" >
+                            <div class="mobile-frnd-search" >
+                                <button class="search-toggle-btn"><i class="flaticon-search"></i></button>
+                            </div>
+                            <div class="mob-frnd-search-inner" >
+                                <form class="mob-frnd-search-box d-flex">
+                                    <input type="text" placeholder="Search Your Friends" class="mob-frnd-search-field">
+                                </form>
+                            </div>
+                            <div class="card card-small mb-0 active-profile-mob-wrapper">
+                                <div class="active-profiles-mob-wrapper slick-row-10">
+                                    <div class="active-profile-mobile">
+                                        <!-- profile picture end -->
+                                        <div class="single-slide">
+                                            <div class="profile-thumb active profile-active">
+                                                <a href="#">
+                                                    <figure class="profile-thumb-small profile-active">
+                                                        <img src="assets/images/profile/profile-small-1.jpg" alt="profile picture">
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- profile picture end -->
+
+                                        <!-- profile picture end -->
+                                        <div class="single-slide">
+                                            <div class="profile-thumb active profile-active">
+                                                <a href="javascript:void(0)">
+                                                    <figure class="profile-thumb-small profile-active">
+                                                        <img src="assets/images/profile/profile-small-8.jpg" alt="profile picture">
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- profile picture end -->
+
+                                        <!-- profile picture end -->
+                                        <div class="single-slide">
+                                            <div class="profile-thumb active profile-active">
+                                                <a href="javascript:void(0)">
+                                                    <figure class="profile-thumb-small profile-active">
+                                                        <img src="assets/images/profile/profile-small-2.jpg" alt="profile picture">
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- profile picture end -->
+
+                                        <!-- profile picture end -->
+                                        <div class="single-slide">
+                                            <div class="profile-thumb active profile-active">
+                                                <a href="javascript:void(0)">
+                                                    <figure class="profile-thumb-small profile-active">
+                                                        <img src="assets/images/profile/profile-small-3.jpg" alt="profile picture">
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- profile picture end -->
+
+                                        <!-- profile picture end -->
+                                        <div class="single-slide">
+                                            <div class="profile-thumb active profile-active">
+                                                <a href="javascript:void(0)">
+                                                    <figure class="profile-thumb-small profile-active">
+                                                        <img src="assets/images/profile/profile-small-4.jpg" alt="profile picture">
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- profile picture end -->
+
+                                        <!-- profile picture end -->
+                                        <div class="single-slide">
+                                            <div class="profile-thumb active profile-active">
+                                                <a href="javascript:void(0)">
+                                                    <figure class="profile-thumb-small profile-active">
+                                                        <img src="assets/images/profile/profile-small-5.jpg" alt="profile picture">
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- profile picture end -->
+
+                                        <!-- profile picture end -->
+                                        <div class="single-slide">
+                                            <div class="profile-thumb active profile-active">
+                                                <a href="javascript:void(0)">
+                                                    <figure class="profile-thumb-small profile-active">
+                                                        <img src="assets/images/profile/profile-small-9.jpg" alt="profile picture">
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- profile picture end -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </footer>
+    <!-- footer area end -->
+
+    <!-- JS
+============================================ -->
+
+    <!-- Modernizer JS -->
+    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <!-- jQuery JS -->
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <!-- Slick Slider JS -->
+    <script src="assets/js/plugins/slick.min.js"></script>
+    <!-- nice select JS -->
+    <script src="assets/js/plugins/nice-select.min.js"></script>
+    <!-- audio video player JS -->
+    <script src="assets/js/plugins/plyr.min.js"></script>
+    <!-- perfect scrollbar js -->
+    <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <!-- light gallery js -->
+    <script src="assets/js/plugins/lightgallery-all.min.js"></script>
+    <!-- image loaded js -->
+    <script src="assets/js/plugins/imagesloaded.pkgd.min.js"></script>
+    <!-- isotope filter js -->
+    <script src="assets/js/plugins/isotope.pkgd.min.js"></script>
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
