@@ -1,4 +1,4 @@
-/////models from backend showld be same ass models from sokckets
+/////models from backend showld be same ass models from sockets
 
 
 
@@ -47,13 +47,13 @@ app.use("",require("./routes/admin"))
 
 
 const myOAuth2Client = new OAuth2(
-    "104185428779-c3hbgd8mmcuhv5hs0o5j44kaojhtamrt.apps.googleusercontent.com",
-    "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",
+    "xxxxx",
+    "hhhhh",
     "https://developers.google.com/oauthplayground",
 );
 
 myOAuth2Client.setCredentials({
-    refresh_token:"1//047ugbGywkNoOCgYIARAAGAQSNwF-L9IrifWFe_N9MYhH818ISIIIDFQfcKLVE-BqZkZjLHNzz31tL9nm23ek5SE88rKWo4c0bKU",
+    refresh_token:"aaaaa",
 
 });
 
@@ -63,10 +63,10 @@ const transport = nodemailer.createTransport({
     service: "gmail",
     auth: {
          type: "OAuth2",
-         user: "logins.samaritianbook@gmail.com", //your gmail account you used to set the project up in google cloud console"
-         clientId: "104185428779-c3hbgd8mmcuhv5hs0o5j44kaojhtamrt.apps.googleusercontent.com",
-         clientSecret: "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",
-         refreshToken: "1//047ugbGywkNoOCgYIARAAGAQSNwF-L9IrifWFe_N9MYhH818ISIIIDFQfcKLVE-BqZkZjLHNzz31tL9nm23ek5SE88rKWo4c0bKU",
+         user: "samaritianbook@gmail.com", //your gmail account you used to set the project up in google cloud console"
+         clientId: "xxxxx",
+         clientSecret: "yyyyyy",
+         refreshToken: "tokenn",
          accessToken: myAccessToken //access token variable we defined earlier
 }});
 
